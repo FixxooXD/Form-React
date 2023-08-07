@@ -53,7 +53,16 @@ export const Register = () => {
     setErrMsg("");
   }, [user, pwd, matchPwd]);
 
+  const handleSubmit =  async (e) =>{
+    e.preventDefault();
+
+    setSuccess(true)
+  }
+
+
+
   return (
+
     <div className="flex justify-center items-center">
       <section>
         <p
@@ -63,7 +72,17 @@ export const Register = () => {
           {errMsg}
         </p>
       </section>
-      <form className="w-[25rem] mt-[8rem]">
+
+
+    {
+      success ? (
+        <>
+        <span>GetLogin</span>
+        <h1>{user}</h1>
+        </>
+      ) 
+      : (
+<form onSubmit={handleSubmit} className="w-[25rem] mt-[8rem]">
         <div class="container border-2 flex flex-col p-5">
           <h1 className="text-center">Register</h1>
           <label className="mt-2">Username : </label>
@@ -162,6 +181,9 @@ export const Register = () => {
           </button>
         </div>
       </form>
+      )
+    }
+
     </div>
   );
 };
